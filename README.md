@@ -19,12 +19,14 @@ Edit `src/App.tsx` for your screen and `src/styles.css` for its styles. The samp
 npm run build
 ```
 
-Vite writes `dist/index.html` and its assets. `base: './'` in `vite.config.ts` keeps the asset paths relative to `index.html`, so the whole `dist` directory can live under any Offline HTML folder. Keep the directory structure and filename capitalization intact.
+The build writes `dist/index.html` and its assets and copies the root `resco.manifest.json` to `dist/resco.manifest.json` byte for byte. `base: './'` in `vite.config.ts` keeps the asset paths relative to `index.html`, so the whole `dist` directory can live under any Offline HTML folder. Keep the directory structure and filename capitalization intact.
 
-Pushing to `main` runs **Build Resco UI**. The GitHub Action uploads the contents of `dist/` as the `resco-ui-dist` artifact. In Studio Resco, connect GitHub, select this repository and a Resco connection/project, then ask the agent to deploy the successful build. The optional `HomeReplacement` setting replaces the mobile app's home screen. Publish the Resco project after reviewing the uploaded files and home screen setting.
+The root manifest uses schema version `1`. List each entity the app accesses by its lowercase logical name in `entities`, with each name listed once. The starter only reads client configuration, so its entity list is empty.
+
+To deploy from Studio Resco, connect GitHub, select this repository and a Resco connection and project, then ask the App Builder agent to release the branch. App Builder uses release tags in the form `resco-deploy/<branch>/<version>`. The optional `HomeReplacement` setting replaces the mobile app's home screen. Publish the Resco project after reviewing the uploaded files and home screen setting.
 
 This template contains no GitHub or Resco credentials. Do not put tokens or secrets in frontend source: every built asset is visible to users of the app.
 
 ## Start a repository
 
-Choose **Use this template** on GitHub, or ask the Studio Resco agent to create a new UI project. Give each UI project its own repository. GitHub Actions starts building after the first push to `main`; use **Run workflow** on the Actions page if you need the initial artifact before editing the code.
+Choose **Use this template** on GitHub, or ask the Studio Resco agent to create a new UI project. Give each UI project its own repository.

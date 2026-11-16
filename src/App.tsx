@@ -58,7 +58,7 @@ export default function App() {
         <h1 id="hero-title">Make this space your own.</h1>
         <p>
           A small starting point for a custom Resco screen. Edit the React components,
-          push to <code>main</code>, then deploy the build from Studio.
+          push your changes, then release the branch from App Builder in Studio.
         </p>
         <div className="hero-actions">
           <button type="button" onClick={showBridgeAlert} disabled={!MobileCRM.bridge}>
@@ -97,7 +97,7 @@ export default function App() {
             </li>
             <li>
               <strong>Ship an update</strong>
-              <span>Push to <code>main</code> to create a deployable build.</span>
+              <span>Release your GitHub branch from App Builder in Studio.</span>
             </li>
           </ol>
         </article>
