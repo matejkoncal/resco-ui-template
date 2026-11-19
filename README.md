@@ -1,6 +1,8 @@
 # Resco UI starter
 
-A small React + Vite + TypeScript project for a custom [Resco Offline HTML](https://docs.resco.net/wiki/Offline_HTML) screen. [JSBridge](https://www.npmjs.com/package/@resconet/jsbridge) is installed and the sample screen reads the client configuration and opens a native alert. The page also works as a browser preview when no Resco client is present.
+A small React + Vite + TypeScript project for a fully web-based [Resco Offline HTML](https://docs.resco.net/wiki/Offline_HTML) app targeting Resco Essential. [JSBridge](https://www.npmjs.com/package/@resconet/jsbridge) is installed for non-UI client APIs: the sample reads client configuration and renders a message in React. The page also works as a browser preview when no Resco client is present.
+
+All screens, record lists, detail/create/edit forms, lookups, dialogs and navigation belong in the web app. Use non-UI JSBridge APIs to read and save data. Native MobileCRM forms, views, dialogs and navigation are not supported for this Essential app. See `AGENTS.md` for the agent instructions.
 
 ## Work locally
 
@@ -23,7 +25,7 @@ The build writes `dist/index.html` and its assets and copies the root `resco.man
 
 The root manifest uses schema version `1`. List each entity the app accesses by its lowercase logical name in `entities`, with each name listed once. The starter only reads client configuration, so its entity list is empty.
 
-To deploy from Studio Resco, connect GitHub, select this repository and a Resco connection and project, then ask the App Builder agent to release the branch. App Builder uses release tags in the form `resco-deploy/<branch>/<version>`. The optional `HomeReplacement` setting replaces the mobile app's home screen. Publish the Resco project after reviewing the uploaded files and home screen setting.
+To deploy from Studio Resco, connect GitHub, select an Essential Woodford project and this repository and branch, then use **Build and deploy**. App Builder pushes a release tag in the form `resco-deploy/<branch>/<version>`; the webhook builds the app and uploads it to the linked projects. The web app automatically provides the Essential project's home UI. Use **Publish project** after reviewing the uploaded app to deliver it to mobile users.
 
 This template contains no GitHub or Resco credentials. Do not put tokens or secrets in frontend source: every built asset is visible to users of the app.
 
