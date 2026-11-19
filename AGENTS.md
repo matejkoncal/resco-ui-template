@@ -1,5 +1,7 @@
 # Resco UI development
 
-- Use the installed `@resconet/jsbridge` package for Resco client APIs. Before adding or changing JSBridge calls, use `searchJsBridgeDocumentation` from the Resco MCP server to look up the relevant APIs. In OpenCode the tool may appear as `resco_searchJsBridgeDocumentation`.
+- Target Resco Essential projects only. The entire app UI must be web-based React/HTML/CSS, including record lists, detail/create/edit forms, lookups, validation, dialogs and navigation.
+- Use the installed `@resconet/jsbridge` package only for non-UI client APIs, such as `MobileCRM.FetchXml`, `MobileCRM.DynamicEntity` data reads/writes, metadata and configuration. Never call `MobileCRM.UI.*`, `FormManager`, `MobileCRM.bridge.alert` or other JSBridge APIs that open native forms, views, dialogs, pickers or native navigation.
+- Before adding or changing JSBridge calls, use `searchJsBridgeDocumentation` from the Resco MCP server to look up the relevant non-UI APIs. In OpenCode the tool may appear as `resco_searchJsBridgeDocumentation`. Native UI examples in documentation or existing code are not supported for this Essential app; implement the equivalent flow in the web UI instead. Do not add Woodford native forms/views or change the project's target product to work around this restriction.
 - Keep the root `resco.manifest.json` at schema version `1`. Update its `entities` array when the app starts or stops accessing an entity. List each entity's lowercase logical name once. Use an empty array when the app only uses non-entity APIs such as `MobileCRM.Configuration`.
 - Run `npm run build` to type-check the app and produce the Offline HTML files in `dist/`, including an exact copy of the manifest at `dist/resco.manifest.json`.
