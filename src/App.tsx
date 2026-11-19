@@ -13,6 +13,7 @@ const previewInfo: ClientInfo = {
 };
 
 export default function App() {
+  const [showMessage, setShowMessage] = useState(false);
   const [clientInfo, setClientInfo] = useState<ClientInfo>(() =>
     MobileCRM.bridge
       ? { status: 'connecting', message: 'Reading Resco client configuration…' }
@@ -37,12 +38,6 @@ export default function App() {
     );
   }, []);
 
-  function showBridgeAlert() {
-    if (MobileCRM.bridge) {
-      MobileCRM.bridge.alert('Hello from your React UI!');
-    }
-  }
-
   return (
     <main className="shell">
       <header className="topbar">
@@ -61,11 +56,11 @@ export default function App() {
           push your changes, then release the branch from App Builder in Studio.
         </p>
         <div className="hero-actions">
-          <button type="button" onClick={showBridgeAlert} disabled={!MobileCRM.bridge}>
-            Try JSBridge alert <span aria-hidden="true">↗</span>
+          <button type="button" onClick={() => setShowMessage(true)}>
+            Try a web message <span aria-hidden="true">↗</span>
           </button>
-          <span className="hero-hint">
-            {MobileCRM.bridge ? 'Opens a native Resco dialog' : 'Available inside a Resco client'}
+          <span className="hero-hint" role="status">
+            {showMessage ? 'Hello from your React UI!' : 'All UI stays in the web app, including in the Resco client'}
           </span>
         </div>
       </section>
