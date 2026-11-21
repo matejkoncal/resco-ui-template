@@ -25,7 +25,7 @@ The build writes `dist/index.html` and its assets and copies the root `resco.man
 
 The root manifest uses schema version `1`. List each entity the app accesses by its lowercase logical name in `entities`, with each name listed once. The starter only reads client configuration, so its entity list is empty.
 
-To deploy from Studio Resco, connect GitHub, select an Essential Woodford project and this repository and branch, then use **Build and deploy**. App Builder pushes a release tag in the form `resco-deploy/<branch>/<version>`; the webhook builds the app and uploads it to the linked projects. The web app automatically provides the Essential project's home UI. Use **Publish project** after reviewing the uploaded app to deliver it to mobile users.
+To deploy from Studio Resco, connect GitHub, select an Essential Woodford project and this repository and branch, then use **Build and publish**. App Builder pushes a release tag in the form `resco-deploy/<branch>/<version>`; the webhook builds the app and uploads it to the linked projects. The web app automatically provides the Essential project's home UI. Studio waits for a successful upload and then publishes the selected Woodford project. Tags pushed directly from Git build and upload the linked projects without automatically publishing them.
 
 This template contains no GitHub or Resco credentials. Do not put tokens or secrets in frontend source: every built asset is visible to users of the app.
 
